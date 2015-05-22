@@ -5,7 +5,7 @@
         baseUrl: '/src',
         urlArgs: '20141024',
         paths: {
-            'jquery': '/bower_components/jquery/dist/jquery.min',
+            'jquery': '/bower_components/jquery/jquery-1.9.0',
             'slider':'/bower_components/slider/slider',
             'bootstrap' : '/bower_components/bootstrap/dist/js/bootstrap.min',
             'jquery-ui': '/bower_components/jquery-ui/jquery-ui.min',
