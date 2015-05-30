@@ -5,7 +5,7 @@
 <#if model.banner?? && model.banner?size gt 0>
 	<div class="banner-container carousel slide" id="estart-banner-carousel" data-ride="carousel">
 		<div class="estart-banner">
-			<ol class="carousel-indicators">
+			<ol class="carousel-indicators" id="sliders" style="text-align: center;width:auto; margin-left:auto;">
 				<#list model.banner as ban>
 					<li data-target="#estart-banner-carousel" data-slide-to="${ban_index}"></li>
 				</#list>
@@ -13,7 +13,7 @@
 			<ul class="banner-content carousel-inner" role="listbox">
 				<#list model.banner as ban>
 					<li class="item">
-                        <img class="slider-img" src="/onesfile/sliders/${ban}" style="margin:auto;" />
+                        <img class="slider-img" style="width:auto;" src="/onesfile/sliders/${ban}" style="margin:auto;" />
                     </li>
 				</#list>
 			</ul>

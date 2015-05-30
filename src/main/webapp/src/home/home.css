@@ -372,4 +372,8 @@ h2 {
 /* slider image height width set */
 .slider-img {
 	height: 400px !important;
+	margin-top: auto; 
+	margin-right: auto; 
+	margin-bottom: auto; 
+	margin-left: auto;
 }
