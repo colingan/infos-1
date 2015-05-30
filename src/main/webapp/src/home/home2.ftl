@@ -23,9 +23,9 @@
 	</div>
 </#if>
 
-<div id="container" style="margin-top: 30px">
-	<div id="content" class="clearfix">
-		<div id="main" class="col620 clearfix" role="main">
+<div id="container" style="margin-top: 30px; margin-bottom: 30px; height:100%;">
+	<div id="content" class="clearfix" style="height:100%;">
+		<div id="main" class="col620 clearfix" role="main" style="height:100%;">
 			<div class="item-wrap clearfix">
 				<#if model.newBlogs?size gt 0>
 					<table width="100%" cellspacing="0" cellpadding="0">
@@ -99,13 +99,13 @@
 			</div>
 		</div>
 		
-		<div id="sidebar" class="widget-area col300" role="complementary">
+		<div id="sidebar" class="widget-area col300" role="complementary" style="height:100%;">
 			<div id="social-media" class="clearfix"></div>
 			<aside id="search-3" class="widget widget_search">
 				<form id="searchform" class="searchform" method="post" action="/search" role="search">
 					<div class="form-group">
-				        <div class="col-sm-8" style="padding-right: 0px;">
-				            <input type="text" class="form-control required" id="s" name="s" placeholder="请输入关键词" style="padding-right: 0px; padding-left: 5px;"/>
+				        <div class="col-sm-8" style="padding-right: 0px; height: 34px;">
+				            <input type="text" class="form-control required" id="s" name="s" placeholder="请输入关键词" style="padding-right: 0px; padding-left: 5px; height:20px;"/>
 				        </div>
 				    </div>
 					<button type="submit" class="btn btn-primary" id="submitBtn">查询</button>

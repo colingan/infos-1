@@ -7,19 +7,19 @@
 	<#include "sidebar.ftl">
 	    
     <div class="pull-right service-main">
-    	<div id="blogsContainer"style="text-align:left;">
+    	<div id="blogsContainer"style="text-align:left;height:90%;">
     		<#list model.blogs as blog>
-	    		<div class="row">
+	    		<div class="row" style="height:10%;">
 					<div class="col-lg-10">
 						<!--blog title-->
-						<h3><a href="/blogs/view?id=${blog.id}">${blog.title}</a></h3>
-						<p class="lead"><i class="fa fa-user"></i> ${blog.author} 发布于 ${blog.addTime} </p>
-						<hr>
+						<h3 style="margin-top:0;"><a href="/blogs/view?id=${blog.id}">${blog.title}</a></h3>
+						<p class="lead" style="margin-bottom:5px;font-size:16px;"><i class="fa fa-user"></i> ${blog.author} 发布于 ${blog.addTime} </p>
+						<hr style="margin-top:0; margin-bottom:2px;">
 					</div>
 				</div>
 			</#list>
     	</div>
-    	<div id="page-selection"></div>
+    	<div id="page-selection" style="height:10%;"></div>
     </div>
 </div>
 
