@@ -43,6 +43,10 @@ define(['require', 'plupload', 'jtable'], function (require) {
 				flash_swf_url: '/bower_components/plupload/js/Moxie.swf',
 				multi_selection: false,
 				
+				headers:{
+					Accept : "application/json; charset=utf-8"
+				},
+				
 				filters : {
 					max_file_size : '10mb',
 					mime_types: [
@@ -81,10 +85,16 @@ define(['require', 'plupload', 'jtable'], function (require) {
 					},
 					
 					FileUploaded: function(up, file, res){
-						$('#originName').val(file.name);
+						// setting hidden input value by jquery not work in ie
+						//document.getElementById("originName").value = file.name;
+//						var form = document.forms['jtable-create-form'];
+//						form.elements['originName'].value = file.name;
+						$('#originName').attr('value', file.name);
 						var res1 = res.response.replace('"{', '{').replace('}"', '}');
 						var obj = JSON.parse(res1);
-						$('#Edit-destName').val(obj.id);
+//						document.getElementById("Edit-destName").value = obj.id;
+//						form.elements['destName'].value = obj.id;
+						$('#Edit-destName').attr('value', obj.id);
 					}
 				}
 			});
