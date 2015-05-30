@@ -1,3 +1,5 @@
+	</div>
+</div>
 <div class="footer">©2015 Baidu <a target="_blank" href="http://www.baidu.com/duty/">使用百度前必读</a> 京ICP证030173号</div>
 <script src="/bower_components/requirejs/require.js"></script>
 <script>

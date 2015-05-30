@@ -4,8 +4,8 @@
 <form class="form-horizontal" role="form" method="POST" id="blog-form">
     <div class="form-group">
         <label class="col-sm-2 control-label">标题：</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control required" id="title" name="title" placeholder="请输入文章标题"/>
+        <div class="col-sm-8" style="height:30px;">
+            <input type="text" class="required" style="height:25px; text-align:left; width:100%; left: 0px;" id="title" name="title" placeholder="请输入文章标题"/>
         </div>
     </div>
     <div class="form-group">
@@ -24,16 +24,21 @@
             </select>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom: 10px;">
     	<label class="col-sm-2 control-label"></label>
     	<div class="col-sm-8">
-    		<textarea id="service-edit" name="content" style="width:100%" class="required">
+    		<textarea id="service-edit" name="content" style="width:100%; min-height:500px;" class="required">
         
     		</textarea>
     	</div>
     </div>
-    <button type="submit" class="btn btn-primary" id="submitBtn">提交</button>
-    <button type="reset" class="btn btn-default">取消</button>
+    <div class="form-group" style="margin-top:10px;">
+    	<label class="col-sm-2 control-label"></label>
+    	<div class="col-sm-8">
+		    <button type="submit" class="btn btn-primary" id="submitBtn">提交</button>
+		    <button type="reset" class="btn btn-default">取消</button>
+	    </div>
+    </div>
 </form>
 </div>
 <#include "../footer/footer.ftl">

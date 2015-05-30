@@ -1,4 +1,5 @@
 <#include "../header/header.ftl">
+<link href="/src/service/service.css" rel="stylesheet" />
 <link href="/src/admin/category.css" rel="stylesheet" />
 
 <link href="/bower_components/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />

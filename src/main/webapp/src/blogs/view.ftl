@@ -3,13 +3,13 @@
 <link href="/bower_components/font-awesome/font-awesome.min.css" rel="stylesheet" />
 <div class="container">
 	<!-- breadcrumb -->
-	<div class="blog-breadcrumb">
+	<div style="margin-top:10px;">
 		<#if model.breadcrumb??>
-			<ol class="breadcrumb">
+			<ul id="crumbs" style="list-style-type:none;">
 				<#list model.breadcrumb as item>
 					<li><a href="${item.link}">${item.name}</a></li>
 				</#list>
-			</ol>
+			</ul>
 		</#if>
 	</div>
 	

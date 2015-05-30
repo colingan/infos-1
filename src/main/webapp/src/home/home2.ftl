@@ -23,7 +23,7 @@
 	</div>
 </#if>
 
-<div id="container" style="margin-top: 30px; margin-bottom: 30px; height:100%;">
+<div id="container" style="margin-top: 30px; min-height:60%;">
 	<div id="content" class="clearfix" style="height:100%;">
 		<div id="main" class="col620 clearfix" role="main" style="height:100%;">
 			<div class="item-wrap clearfix">

@@ -150,8 +150,8 @@
     text-align: center;
     color: #787878;
     font-size: 12px;
-    padding: 35px 0;
     height: 30px;
+    margin-top: -30px;
 }
 .footer a {
     color: #787878;
@@ -170,3 +170,21 @@
 	height:14px; 
 	background:url(/src/img/main/icon/new.gif) no-repeat; 
 }
+
+/* breadcrumb */
+#crumbs {
+	height:2.3em;
+	border:1px solid #dedede;
+	}
+#crumbs li {
+	float:left;
+	line-height:2.3em;
+	color:#777;
+	padding-left:.75em;
+	list-style-type:none;
+	}		
+#crumbs li a {
+	background:url(/src/common/img/crumbs.gif) no-repeat right center;
+	display:block;
+	padding:0 15px 0 0;
+	}							
