@@ -31,6 +31,7 @@ import com.github.colingan.infos.dal.category.bo.Category;
 import com.github.colingan.infos.dal.common.Field;
 import com.github.colingan.infos.dal.slider.bo.Slider;
 import com.github.colingan.infos.web.controller.BaseController;
+import com.github.colingan.infos.web.main.model.BlogWrapper;
 import com.github.colingan.infos.web.main.model.MainModel;
 import com.github.colingan.infos.web.main.model.SearchModel;
 
@@ -150,51 +151,35 @@ public class IndexController extends BaseController {
 			model.setBanner(banner);
 		}
 		// new blogs
-		Map<Category, List<Entry<Category, List<Blog>>>> tmpBlogs = new LinkedHashMap<Category, List<Entry<Category, List<Blog>>>>();
-		Map<Category, Map<Category, List<Blog>>> newBlogs = new LinkedHashMap<Category, Map<Category, List<Blog>>>();
+		Map<Category, List<BlogWrapper>> newBlogs = new LinkedHashMap<Category, List<BlogWrapper>>();
 		Map<Category, List<Category>> categoryMap = this.categoryService
 				.queryAllValidCategoryBriefs();
 		if (categoryMap != null && categoryMap.size() > 0) {
 			for (Entry<Category, List<Category>> entry : categoryMap.entrySet()) {
-				newBlogs.put(entry.getKey(),
-						new LinkedHashMap<Category, List<Blog>>());
-				if (CollectionUtils.isNotEmpty(entry.getValue())) {
-					for (Category category : entry.getValue()) {
-						newBlogs.get(entry.getKey()).put(category,
-								new ArrayList<Blog>());
-					}
-				}
+				newBlogs.put(entry.getKey(),new ArrayList<BlogWrapper>());
 			}
 		}
-		List<Blog> blogs = this.blogService.getLatestBlogs(Integer
-				.valueOf(latestCount));
+		List<Blog> blogs = this.blogService.getLatestBlogs(Integer.valueOf(latestCount));
 		Date now = new Date();
 		if (CollectionUtils.isNotEmpty(blogs)) {
 			for (Blog blog : blogs) {
 				Category category1 = new Category(blog.getCategory1());
 				Category category2 = new Category(blog.getCategory2());
-				List<Blog> blogList = null;
+				List<BlogWrapper> blogList = null;
 				if (newBlogs.containsKey(category1)) {
-					blogList = newBlogs.get(category1).get(category2);
+					blogList = newBlogs.get(category1);
 				}
 				if (blogList != null) {
 					if (DateTimeUtil.daysBetween(now, blog.getAddTime()) <= newsDelay) {
 						blog.setFresh(true);
 					}
-					blogList.add(blog);
+					blogList.add(new BlogWrapper(category2, blog));
 				} else {
 					LOGGER.warn("dirty blog data find." + blog);
 				}
 			}
 		}
-		for (Entry<Category, Map<Category, List<Blog>>> entry : newBlogs
-				.entrySet()) {
-			tmpBlogs.put(entry.getKey(),
-					new ArrayList<Entry<Category, List<Blog>>>(entry.getValue()
-							.entrySet()));
-		}
-		model.setNewBlogs(new ArrayList<Entry<Category, List<Entry<Category, List<Blog>>>>>(
-				tmpBlogs.entrySet()));
+		model.setNewBlogs(new ArrayList<Entry<Category, List<BlogWrapper>>>(newBlogs.entrySet()));
 
 		// links
 		model.setLinks(this.linkService.queryAllLinks());

@@ -27,7 +27,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.github.colingan.infos.biz.BizConstants;
+import com.github.colingan.infos.common.utils.Constants;
 import com.github.colingan.infos.common.utils.FileUtil;
+import com.github.colingan.infos.common.utils.JacksonUtil;
 import com.github.colingan.infos.web.controller.BaseController;
 
 @Controller
@@ -227,8 +229,31 @@ public class EditorController extends BaseController {
 	}
 
 	@RequestMapping(value = "/editor/upload.do")
-	@ResponseBody
-	public Map<String, Object> upload(MultipartHttpServletRequest request,
+	public void uploadNewForIE(MultipartHttpServletRequest request, HttpServletResponse response) throws IOException {
+		Map<String, Object> message = upload(request, response);
+		response.reset();
+		response.setCharacterEncoding(Constants.UTF_8);
+		response.setContentType("text/html");
+		PrintWriter writer = null;
+		try{
+			writer = response.getWriter();
+			writer.print(JacksonUtil.obj2Str(message));
+			writer.flush();
+		}catch(Exception e){
+			LOGGER.error("failed to upload file.", e);
+			throw new IOException(e);
+		}finally {
+			if(writer != null) {
+				try{
+					writer.close();
+				}catch(Exception e){
+					// ignore
+				}
+			}
+		}
+	}
+	
+	private Map<String, Object> upload(MultipartHttpServletRequest request,
 			HttpServletResponse response) {
 		String dirName = request.getParameter("dir");
 		if (dirName == null) {

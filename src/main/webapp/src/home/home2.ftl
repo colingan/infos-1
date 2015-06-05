@@ -54,31 +54,29 @@
 										</table>
 										<div class="clear"></div>
 										<ul>
-											<#list rootEntry.getValue() as childEntry>
-												<#list childEntry.getValue() as latestBlog>
-													<#if latestBlog.fresh>
-														<li class="today">
-													<#else>
-														<li>
-													</#if>
-													
-													<span class="date">${latestBlog.formatedAddTime}</span>
-													<a href="/blogs/view?id=${latestBlog.id}">
-														<abbr title="${latestBlog.title}">
-															<#if latestBlog.title?length gt 10>
-																${latestBlog.title?substring(0,8)}...
-															<#else>
-																${latestBlog.title}
-															</#if>
-															
-															<#if latestBlog.fresh>
-																<span class="blog_new"></span>
-															</#if>
-														</abbr>
-													</a>
-													
-													</li>
-												</#list>
+											<#list rootEntry.getValue() as blogWrapper>
+												<#if blogWrapper.blog.fresh>
+													<li class="today">
+												<#else>
+													<li>
+												</#if>
+												
+												<span class="date">${blogWrapper.blog.formatedAddTime}</span>
+												<a href="/blogs/view?id=${blogWrapper.blog.id}">
+													<abbr title="${blogWrapper.blog.title}">
+														<#if blogWrapper.blog.title?length gt 10>
+															${blogWrapper.blog.title?substring(0,8)}...
+														<#else>
+															${blogWrapper.blog.title}
+														</#if>
+														
+														<#if blogWrapper.blog.fresh>
+															<span class="blog_new"></span>
+														</#if>
+													</abbr>
+												</a>
+												
+												</li>
 											</#list>
 										</ul>
 									</div>

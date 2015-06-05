@@ -20,7 +20,7 @@ public class MainModel extends AbstractBaseModel {
 
   private static final long serialVersionUID = -8517449613990835650L;
   private String[] banner;
-  private List<Entry<Category, List<Entry<Category, List<Blog>>>>> newBlogs;
+  private List<Entry<Category, List<BlogWrapper>>> newBlogs;
 
   private List<Link> links;
 
@@ -32,11 +32,11 @@ public class MainModel extends AbstractBaseModel {
     this.banner = banner;
   }
 
-  public List<Entry<Category, List<Entry<Category, List<Blog>>>>> getNewBlogs() {
+  public List<Entry<Category, List<BlogWrapper>>> getNewBlogs() {
     return newBlogs;
   }
 
-  public void setNewBlogs(List<Entry<Category, List<Entry<Category, List<Blog>>>>> newBlogs) {
+  public void setNewBlogs(List<Entry<Category, List<BlogWrapper>>> newBlogs) {
     this.newBlogs = newBlogs;
   }
 
